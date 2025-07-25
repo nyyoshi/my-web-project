@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Diary App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="listScreen">
+      <header id="today"></header>
+
+      <div class="month-label" id="monthLabel">
+        <button id="prevMonth" class="monthArrow">←</button>
+        <div id="yearMonth">2025年7月</div>
+        <button id="nextMonth" class="monthArrow">→</button>
+      </div>
+
+      <div id="listContainer">
+        <div id="listWrapper">
+          <div id="list"></div>
+        </div>
+      </div>
+      <!-- 一覧の下に表示させる　-->
+      <div style="text-align: center; margin: 20px 0"></div>
+      <div class="button-container">
+        <button id="editButton">EditToday</button>
+      </div>
+    </div>
+
+    <div id="editorScreen">
+      <header id="editorHeader"></header>
+      <textarea id="textInput" maxlength="45"></textarea><br />
+      <div class="save-button-wrapper">
+        <button id="saveButton">SAVE</button>
+      </div>
+      <div class="button-container">
+        <button id="backButton">BACK</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

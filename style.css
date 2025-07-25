@@ -1,0 +1,166 @@
+body {
+  background-color: #f5deb3;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: right;
+  padding: 10px;
+}
+
+#listContainer {
+  height: calc(100vh - 100px); /* 画面の高さからボタンの高さ分引く */
+  display: flex;
+  flex-direction: column;
+}
+
+#listWrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.month-label {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #e6dbbc;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 右側の一覧 */
+#list {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  padding-bottom: 70px; /* ボタンの高さよりやや余裕をもたせる */
+}
+
+.day-entry {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.day-label {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  align-items: center; /* 中央寄せ */
+  width: 30px;
+}
+
+.text-space {
+  flex: 1;
+  border: 1px solid #999;
+  min-height: 40px;
+  padding: 5px;
+  background: #fff8dc;
+}
+
+.sunday {
+  color: red;
+}
+
+.saturday {
+  color: blue;
+}
+
+.button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#editButton {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: gray;
+  color: black;
+  z-index: 1000;
+  border: none;
+  border-radius: 5px;
+}
+
+#editorScreen {
+  display: none;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5deb3;
+}
+
+.save-button-wrapper {
+  text-align: right;
+  padding-right: 10px; /* 少し余裕を持たせる */
+}
+
+#saveButton {
+  padding: 10px 20px;
+}
+
+#editorScreen textarea {
+  width: 100%;
+  height: 60px;
+}
+
+#editorScreen button {
+  margin: 5px;
+}
+
+#backButton {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+#monthLabel button {
+  margin-left: 5px;
+  padding: 3px 8px;
+  font-size: 16px;
+}
+
+#monthLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #e6dbbc;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#yearMonth {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.monthArrow {
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 5px 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.monthArrow:hover {
+  background-color: #ddd;
+}

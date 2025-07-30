@@ -164,3 +164,26 @@ header {
 .monthArrow:hover {
   background-color: #ddd;
 }
+
+/* 一覧をスクロールできるようにする */
+#scrollArea {
+  height: calc(100vh - 150px); /* 高さは必要に応じて調整してください */
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* 画面の下に固定表示するボタン */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#listScreen {
+  padding-bottom: 60px; /* ボタンの高さ分の余白を確保 */
+}

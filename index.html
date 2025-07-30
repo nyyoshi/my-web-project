@@ -6,6 +6,7 @@
     <title>My Diary App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div id="listScreen">
       <header id="today"></header>
@@ -16,19 +17,18 @@
         <button id="nextMonth" class="monthArrow">→</button>
       </div>
 
-      <div id="listContainer">
-        <div id="listWrapper">
-          <div id="list"></div>
-        </div>
+      <!-- スクロールするエリア -->
+      <div id="scrollArea">
+        <div id="list"></div>
       </div>
-      <!-- 一覧の下に表示させる　-->
-      <div style="text-align: center; margin: 20px 0"></div>
-      <div class="button-container">
+
+      <!-- 固定表示のボタン -->
+      <div class="fixed-footer">
         <button id="editButton">EditToday</button>
       </div>
     </div>
 
-    <div id="editorScreen">
+    <div id="editorScreen" style="display: none">
       <header id="editorHeader"></header>
       <textarea id="textInput" maxlength="45"></textarea><br />
       <div class="save-button-wrapper">

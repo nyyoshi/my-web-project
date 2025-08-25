@@ -1,5 +1,6 @@
 body {
-  background-color: #f5deb3;
+  background-color: #000;
+  color: black;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -40,7 +41,6 @@ header {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  padding-bottom: 70px; /* ボタンの高さよりやや余裕をもたせる */
 }
 
 .day-entry {
@@ -136,17 +136,19 @@ header {
 
 #monthLabel {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   background-color: #e6dbbc;
   padding: 10px 0;
+  border-top-left-radius: 12px; /* 左上を丸める */
+  border-top-right-radius: 12px; /* 右上を丸める */
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 #yearMonth {
+  text-align: left;
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -167,23 +169,22 @@ header {
 
 /* 一覧をスクロールできるようにする */
 #scrollArea {
-  height: calc(100vh - 150px); /* 高さは必要に応じて調整してください */
+  background-color: #e6dbbc;
+  height: calc(100vh - 180px); /* 高さは必要に応じて調整してください */
   overflow-y: auto;
-  padding: 10px;
+  padding: 0px;
+  margin: 0;
+  flex: 1;
+  border-bottom-left-radius: 12px; /* 左下を丸める */
+  border-bottom-right-radius: 12px; /* 右下を丸める */
 }
 
 /* 画面の下に固定表示するボタン */
-.fixed-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
 
 #listScreen {
-  padding-bottom: 60px; /* ボタンの高さ分の余白を確保 */
+  padding: 20px; /* ボタンの高さ分の余白を確保 */
+}
+
+#today {
+  color: white;
 }

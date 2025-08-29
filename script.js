@@ -24,7 +24,7 @@ function updateToday() {
 
   todayHeader.textContent = `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(
     d.getDate()
-  )} ${dayNames[d.getDay()]}`;
+  )} (${dayNames[d.getDay()]})`;
 }
 
 function renderList() {

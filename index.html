@@ -9,9 +9,9 @@
 
   <body>
     <div id="listScreen">
-      <header id="today"></header>
+      <div id="today"></div>
 
-      <div class="month-label" id="monthLabel">
+      <div id="monthLabel">
         <button id="prevMonth" class="monthArrow">←</button>
         <div id="yearMonth">2025年7月</div>
         <button id="nextMonth" class="monthArrow">→</button>
@@ -23,17 +23,23 @@
       </div>
 
       <!-- 固定表示のボタン -->
-      <div class="fixed-footer">
+      <div>
         <button id="editButton">EditToday</button>
       </div>
     </div>
 
+    <!-- 編集画面 -->
     <div id="editorScreen" style="display: none">
       <header id="editorHeader"></header>
-      <textarea id="textInput" maxlength="45"></textarea><br />
-      <div class="save-button-wrapper">
-        <button id="saveButton">SAVE</button>
+      <div id="editArea">
+        <textarea id="textInput" maxlength="45"></textarea><br />
+        <!-- 保存ボタン -->
+        <div class="save-button-wrapper">
+          <button id="saveButton">SAVE</button>
+        </div>
       </div>
+
+      <!-- 戻るボタン -->
       <div class="button-container">
         <button id="backButton">BACK</button>
       </div>

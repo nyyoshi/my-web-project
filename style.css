@@ -1,14 +1,15 @@
 body {
-  background-color: #000;
+  background: repeating-linear-gradient(
+    90deg,
+    #5a4333,
+    /* 明るめのこげ茶 */ #5a4333 40px,
+    #473528 40px,
+    #473528 80px
+  );
   color: black;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-}
-
-header {
-  text-align: right;
-  padding: 10px;
 }
 
 #listContainer {
@@ -25,22 +26,13 @@ header {
   border-bottom: 1px solid #ccc;
 }
 
-.month-label {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #e6dbbc;
-  padding: 10px;
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-}
-
 /* 右側の一覧 */
 #list {
   flex: 1;
   padding: 10px;
-  overflow-y: auto;
+  border: none; /* 枠線を消す */
+  box-shadow: none; /* もし影で枠っぽく見えている場合 */
+  background-color: transparent; /* 背景を透明にしたい場合 */
 }
 
 .day-entry {
@@ -91,14 +83,19 @@ header {
 }
 
 #editorScreen {
-  display: none;
   padding: 10px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f5deb3;
+  background: repeating-linear-gradient(
+    90deg,
+    #5a4333,
+    /* 明るめのこげ茶 */ #5a4333 40px,
+    #473528 40px,
+    #473528 80px
+  );
 }
 
 .save-button-wrapper {
@@ -120,12 +117,17 @@ header {
 }
 
 #backButton {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
   background: black;
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 5px;
+  z-index: 1000;
 }
 
 #monthLabel button {
@@ -138,7 +140,7 @@ header {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  background-color: #e6dbbc;
+  background-color: #e3d7a3;
   padding: 10px 0;
   border-top-left-radius: 12px; /* 左上を丸める */
   border-top-right-radius: 12px; /* 右上を丸める */
@@ -169,7 +171,7 @@ header {
 
 /* 一覧をスクロールできるようにする */
 #scrollArea {
-  background-color: #e6dbbc;
+  background-color: #fff4db;
   height: calc(100vh - 180px); /* 高さは必要に応じて調整してください */
   overflow-y: auto;
   padding: 0px;
@@ -182,9 +184,34 @@ header {
 /* 画面の下に固定表示するボタン */
 
 #listScreen {
-  padding: 20px; /* ボタンの高さ分の余白を確保 */
+  padding: 10px; /* ボタンの高さ分の余白を確保 */
 }
 
 #today {
   color: white;
+  text-align: right;
+  padding-top: 0;
+  padding-right: 10px;
+  padding-bottom: 5px; /* 下は少し余裕を持たせる */
+}
+
+#editorHeader {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  background-color: #e6dbbc;
+  padding: 10px 0;
+  border-top-left-radius: 12px; /* 左上を丸める */
+  border-top-right-radius: 12px; /* 右上を丸める */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#editArea {
+  background-color: #fff4db;
+  height: calc(100vh - 180px); /* 高さは必要に応じて調整してください */
+  border-bottom-left-radius: 12px; /* 左下を丸める */
+  border-bottom-right-radius: 12px; /* 右下を丸める */
+  padding: 10px;
 }

@@ -1,29 +1,41 @@
-body {
-  background: repeating-linear-gradient(
+:root {
+  --main-bg: repeating-linear-gradient(
     90deg,
     #5a4333,
-    /* 明るめのこげ茶 */ #5a4333 40px,
+    #5a4333 40px,
     #473528 40px,
     #473528 80px
   );
+
+  /* 面・ヘッダーなどの共通色 */
+  --surface: #fff4db; /* #scrollArea / #editArea の面色 */
+  --header-bg: #e3d7a3; /* 月ヘッダー用 */
+  --editor-header-bg: #e6dbbc; /* 編集ヘッダー用（微妙に違うなら別で） */
+
+  /* 曜日の色 */
+  --weekday: #979797;
+  --saturday: blue;
+  --sunday: red;
+
+  /* 角丸・影・余白 */
+  --radius-lg: 12px;
+  --radius-sm: 2px;
+  --page-padding: 10px;
+  --content-height: calc(100vh - 180px);
+
+  /* ボタンのデフォルト（共通で使える） */
+  --btn-radius: 5px;
+}
+
+body {
+  background: var(--main-bg);
   color: black;
-  font-family: sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   margin: 0;
   padding: 0;
-}
-
-#listContainer {
-  height: calc(100vh - 100px); /* 画面の高さからボタンの高さ分引く */
-  display: flex;
-  flex-direction: column;
-}
-
-#listWrapper {
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 10px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /* 右側の一覧 */
@@ -37,8 +49,8 @@ body {
 
 .day-entry {
   display: flex;
-  border-bottom: 1px solid #ccc;
   padding: 5px;
+  border: none;
 }
 
 .day-label {
@@ -46,88 +58,73 @@ body {
   flex-direction: column; /* 縦並びにする */
   align-items: center; /* 中央寄せ */
   width: 30px;
+  border-bottom: 1px solid #ddd;
 }
 
 .text-space {
   flex: 1;
-  border: 1px solid #999;
   min-height: 40px;
   padding: 5px;
-  background: #fff8dc;
+  border-bottom: 1px solid #ddd;
+}
+
+.day-label div:not(.sunday):not(.saturday) {
+  color: var(--weekday);
 }
 
 .sunday {
-  color: red;
+  color: var(--sunday);
 }
-
 .saturday {
-  color: blue;
+  color: var(--saturday);
 }
 
 .button-container {
   text-align: center;
-  margin: 20px 0;
-}
-
-#editButton {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background: gray;
-  color: black;
-  z-index: 1000;
-  border: none;
-  border-radius: 5px;
+  margin: 5px;
 }
 
 #editorScreen {
-  padding: 10px;
+  background: var(--main-bg);
+  display: none;
+  justify-content: center; /* 横方向中央揃え */
+  align-items: flex-start; /* 上からスタート */
+  padding-top: 25px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    #5a4333,
-    /* 明るめのこげ茶 */ #5a4333 40px,
-    #473528 40px,
-    #473528 80px
-  );
 }
 
 .save-button-wrapper {
   text-align: right;
-  padding-right: 10px; /* 少し余裕を持たせる */
+  padding-right: 30px;
+  margin-top: 2px;
 }
 
 #saveButton {
   padding: 10px 20px;
+  background: #584f5b;
+  color: white;
+  border-radius: 2px;
 }
 
 #editorScreen textarea {
-  width: 100%;
+  display: block;
+  margin: 0px auto;
+  padding: 5px;
+  width: calc(100% - 20px);
+
   height: 60px;
-}
-
-#editorScreen button {
-  margin: 5px;
-}
-
-#backButton {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background: black;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  z-index: 1000;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 1px 4px rgba(0, 0, 0, 0.2),
+    2px 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 1em;
+  resize: none;
+  box-sizing: border-box;
 }
 
 #monthLabel button {
@@ -137,54 +134,45 @@ body {
 }
 
 #monthLabel {
+  width: 100%;
+  padding: 10px 5px;
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  background-color: #e3d7a3;
-  padding: 10px 0;
-  border-top-left-radius: 12px; /* 左上を丸める */
-  border-top-right-radius: 12px; /* 右上を丸める */
+  background-color: var(--header-bg);
+  border-top-left-radius: var(--radius-lg); /* 左上を丸める */
+  border-top-right-radius: var(--radius-lg); /* 右上を丸める */
   position: sticky;
   top: 0;
   z-index: 10;
+  box-sizing: border-box; /* padding込みで幅を計算 */
 }
 
 #yearMonth {
   text-align: left;
   font-weight: bold;
   font-size: 1.2em;
-}
-
-.monthArrow {
-  background-color: #fff;
-  border: 1px solid #999;
-  padding: 5px 10px;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.monthArrow:hover {
-  background-color: #ddd;
+  width: 90%; /* 画面の幅の90%に制限 */
 }
 
 /* 一覧をスクロールできるようにする */
 #scrollArea {
-  background-color: #fff4db;
-  height: calc(100vh - 180px); /* 高さは必要に応じて調整してください */
+  background-color: var(--surface);
+  height: calc(100vh - 130px); /* 高さは必要に応じて調整してください */
+  width: 100%;
   overflow-y: auto;
   padding: 0px;
   margin: 0;
   flex: 1;
-  border-bottom-left-radius: 12px; /* 左下を丸める */
-  border-bottom-right-radius: 12px; /* 右下を丸める */
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
 }
 
 /* 画面の下に固定表示するボタン */
 
 #listScreen {
-  padding: 10px; /* ボタンの高さ分の余白を確保 */
+  width: 96%;
+  margin: 0 auto;
 }
 
 #today {
@@ -199,19 +187,76 @@ body {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  background-color: #e6dbbc;
-  padding: 10px 0;
-  border-top-left-radius: 12px; /* 左上を丸める */
-  border-top-right-radius: 12px; /* 右上を丸める */
+  background-color: var(--editor-header-bg);
+  padding: 10px 10px;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
   position: sticky;
   top: 0;
   z-index: 10;
+  width: 93%;
+  margin: 0 auto;
 }
 
 #editArea {
-  background-color: #fff4db;
-  height: calc(100vh - 180px); /* 高さは必要に応じて調整してください */
-  border-bottom-left-radius: 12px; /* 左下を丸める */
-  border-bottom-right-radius: 12px; /* 右下を丸める */
-  padding: 10px;
+  background-color: var(--surface);
+  padding: 10px 10px;
+  height: calc(100vh - 140px); /* 高さは必要に応じて調整してください */
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  width: 93%;
+  margin: 0 auto;
+}
+
+.headerContent {
+  margin-left: 5px;
+}
+
+#counter {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* 共通の見た目 */
+.fixed-button {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 40px;
+  border: none;
+  border-radius: var(--btn-radius);
+  color: var(--btn-text);
+  background: linear-gradient(
+    to bottom,
+    var(--btn-grad-top),
+    var(--btn-grad-bottom)
+  );
+  box-shadow: var(--btn-shadow, var(--btn-inset));
+  cursor: pointer;
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
+  z-index: 1000;
+}
+
+/* クリック中（押し込み） */
+.fixed-button:active {
+  transform: translateX(-50%) translateY(2px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* 色の違いは修飾クラスで */
+.fixed-button--silver {
+  --btn-text: #111;
+  --btn-grad-top: #e2e2e2; /* 明るい銀 */
+  --btn-grad-bottom: #808080; /* 落ち着いた銀 */
+}
+
+.fixed-button--dark {
+  --btn-text: #fff;
+  --btn-grad-top: #6b6370;
+  --btn-grad-bottom: #3c353d;
 }

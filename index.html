@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -12,9 +12,7 @@
       <div id="today"></div>
 
       <div id="monthLabel">
-        <button id="prevMonth" class="monthArrow">←</button>
-        <div id="yearMonth">2025年7月</div>
-        <button id="nextMonth" class="monthArrow">→</button>
+        <span id="yearMonth"></span>
       </div>
 
       <!-- スクロールするエリア -->
@@ -23,28 +21,34 @@
       </div>
 
       <!-- 固定表示のボタン -->
-      <div>
-        <button id="editButton">EditToday</button>
-      </div>
+      <button id="editButton" class="fixed-button fixed-button--silver">
+        EditToday
+      </button>
     </div>
 
     <!-- 編集画面 -->
-    <div id="editorScreen" style="display: none">
-      <header id="editorHeader"></header>
+    <div id="editorScreen">
+      <header id="editorHeader">
+        <div class="headerContent"></div>
+      </header>
       <div id="editArea">
-        <textarea id="textInput" maxlength="45"></textarea><br />
+        <textarea id="textInput" maxlength="50"></textarea>
         <!-- 保存ボタン -->
         <div class="save-button-wrapper">
+          <!-- 残り文字数カウンター -->
+          <div id="counter">50</div>
           <button id="saveButton">SAVE</button>
         </div>
       </div>
 
       <!-- 戻るボタン -->
       <div class="button-container">
-        <button id="backButton">BACK</button>
+        <button id="backButton" class="fixed-button fixed-button--dark">
+          BACK
+        </button>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

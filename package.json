@@ -1,0 +1,23 @@
+{
+  "name": "my-web-project",
+  "version": "1.0.0",
+  "description": "日記アプリです",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyyoshi/my-web-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyyoshi/my-web-project/issues"
+  },
+  "homepage": "https://github.com/nyyoshi/my-web-project#readme",
+  "devDependencies": {
+    "markuplint": "^4.13.1"
+  }
+}
